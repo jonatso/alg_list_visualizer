@@ -15,7 +15,7 @@ import InputModal from "./InputModal";
 
 export const App = () => {
     const [algLists, setAlgLists] = useState<
-        { title: string; algs: string[] }[]
+        { title: string; algs: string[]; isZBLS: boolean }[]
     >([]);
 
     return (
@@ -36,7 +36,10 @@ export const App = () => {
                                     </Text>
                                     <Grid templateColumns={"repeat(5, 1fr)"}>
                                         {algList.algs.map((alg) => (
-                                            <AlgCard alg={alg} />
+                                            <AlgCard
+                                                alg={alg}
+                                                isZBLS={algList.isZBLS}
+                                            />
                                         ))}
                                     </Grid>
                                 </Box>

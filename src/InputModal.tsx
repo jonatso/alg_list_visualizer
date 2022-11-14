@@ -16,7 +16,9 @@ import parseInput from "./parseInput";
 export default function InputModal({
     setAlgLists,
 }: {
-    setAlgLists: Dispatch<SetStateAction<{ title: string; algs: string[] }[]>>;
+    setAlgLists: Dispatch<
+        SetStateAction<{ title: string; algs: string[]; isZBLS: boolean }[]>
+    >;
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     let [value, setValue] = useState("");

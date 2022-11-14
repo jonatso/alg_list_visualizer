@@ -1,7 +1,13 @@
 import { Box, Text } from "@chakra-ui/react";
 import AlgImage from "./AlgImage";
 
-export default function AlgCard({ alg }: { alg: string }) {
+export default function AlgCard({
+    alg,
+    isZBLS,
+}: {
+    alg: string;
+    isZBLS?: boolean;
+}) {
     return (
         <Box
             maxW="sm"
@@ -13,7 +19,7 @@ export default function AlgCard({ alg }: { alg: string }) {
             display="flex"
             flexDirection="column"
         >
-            <AlgImage alg={alg} />
+            <AlgImage alg={alg} isZBLS={isZBLS} />
             <Text m={3} fontSize="lg" fontWeight={"medium"}>
                 {alg}
             </Text>
