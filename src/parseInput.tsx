@@ -9,7 +9,10 @@ export default function parseInput(input: string) {
 
         let algList: { title: string; algs: string[]; isZBLS: boolean } = {
             title: algListLines[0],
-            algs: algListLines.filter((line) => line !== "").slice(1),
+            algs: algListLines
+                .filter((line) => line !== "")
+                .slice(1)
+                .map((line) => line.split("#")[0]),
             isZBLS: algListLines[0].includes("ZBLS"),
         };
         // remove empty lines

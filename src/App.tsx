@@ -53,7 +53,8 @@ export const App = () => {
                         ) : (
                             <Text>
                                 🤠 Seperate each alg list with a line starting
-                                with //, and put one alg per line. 🤠
+                                with //, and put one alg per line. Put comments
+                                on algs behind # 🤠
                             </Text>
                         )}
                     </VStack>
