@@ -34,7 +34,7 @@ export const App = () => {
                                     <Text fontWeight={"semibold"}>
                                         {algList.title}
                                     </Text>
-                                    <Grid templateColumns={"repeat(5, 1fr)"}>
+                                    <Grid templateColumns={"repeat(6, 1fr)"}>
                                         {algList.algs.map((alg) => (
                                             <AlgCard
                                                 alg={alg}
