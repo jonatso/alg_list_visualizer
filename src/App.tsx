@@ -2,39 +2,45 @@ import {
     ChakraProvider,
     Box,
     Text,
-    Link,
     VStack,
-    Code,
     Grid,
     theme,
-    Flex,
+    Textarea,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AlgCard from "./AlgCard";
-import InputModal from "./InputModal";
+import parseInput from "./parseInput";
 
 export const App = () => {
-    const [algLists, setAlgLists] = useState<
-        { title: string; algs: string[]; isZBLS: boolean }[]
-    >([]);
+    // const [algLists, setAlgLists] = useState<
+    //     { title: string; algs: string[]; isZBLS: boolean }[]
+    // >([]);
+
+    let [inputValue, setInputValue] = useState(
+        () => localStorage.getItem("algListInput") || ""
+    );
+
+    let algLists = parseInput(inputValue);
+
+    useEffect(() => {
+        localStorage.setItem("algListInput", inputValue);
+    }, [inputValue]);
 
     return (
         <ChakraProvider theme={theme}>
-            <Box textAlign="center" fontSize="xl">
-                <Grid minH="100vh" p={3}>
-                    <VStack spacing={3}>
+            <Box textAlign="center" fontSize="xl" height={"100vh"}>
+                <Grid p={0} templateColumns="70% 30%" height={"100vh"}>
+                    <VStack spacing={3} height={"100vh"} overflow={"scroll"}>
                         <Text fontWeight={"bold"} fontSize={30}>
                             Alg List Visualizer
                         </Text>
-                        <InputModal setAlgLists={setAlgLists} />
-
                         {algLists.length > 0 ? (
                             algLists.map((algList) => (
                                 <Box>
                                     <Text fontWeight={"semibold"}>
                                         {algList.title}
                                     </Text>
-                                    <Grid templateColumns={"repeat(6, 1fr)"}>
+                                    <Grid templateColumns={"repeat(5, 1fr)"}>
                                         {algList.algs.map((alg) => (
                                             <AlgCard
                                                 alg={alg}
@@ -51,6 +57,11 @@ export const App = () => {
                             </Text>
                         )}
                     </VStack>
+                    <Textarea
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        height="full"
+                    />
                 </Grid>
             </Box>
         </ChakraProvider>
