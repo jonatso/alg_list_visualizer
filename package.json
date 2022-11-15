@@ -1,6 +1,6 @@
 {
   "name": "alg_list_visualizer",
-  "homepage": ".",
+  "homepage": "alg_list_visualizer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
