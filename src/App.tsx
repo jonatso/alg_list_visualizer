@@ -29,7 +29,7 @@ export const App = () => {
     return (
         <ChakraProvider theme={theme}>
             <Box textAlign="center" fontSize="xl" height={"100vh"}>
-                <Grid p={0} templateColumns="70% 30%" height={"100vh"}>
+                <Grid pl={2} templateColumns="70% 30%" height={"100vh"}>
                     <VStack spacing={3} height={"100vh"} overflow={"scroll"}>
                         <Text fontWeight={"bold"} fontSize={30}>
                             Alg List Visualizer
@@ -40,7 +40,11 @@ export const App = () => {
                                     <Text fontWeight={"semibold"}>
                                         {algList.title}
                                     </Text>
-                                    <Grid templateColumns={"repeat(5, 1fr)"}>
+                                    <Grid
+                                        templateColumns={"repeat(5, 1fr)"}
+                                        gap={2}
+                                        width={"full"}
+                                    >
                                         {algList.algs.map((alg) => (
                                             <AlgCard
                                                 alg={alg}

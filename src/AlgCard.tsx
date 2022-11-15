@@ -10,14 +10,13 @@ export default function AlgCard({
 }) {
     return (
         <Box
-            maxW="sm"
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
             p={1}
-            m={1.5}
             display="flex"
             flexDirection="column"
+            width={"full"}
         >
             <AlgImage alg={alg} isZBLS={isZBLS} />
             <Text m={2} mt={0} fontSize="md" fontWeight={"medium"}>
