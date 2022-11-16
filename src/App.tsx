@@ -34,7 +34,7 @@ export const App = () => {
                         <Text fontWeight={"bold"} fontSize={30}>
                             Alg List Visualizer
                         </Text>
-                        {algLists.length > 0 ? (
+                        {inputValue.length > 0 ? (
                             algLists.map((algList) => (
                                 <Box>
                                     <Text fontWeight={"semibold"}>
