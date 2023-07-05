@@ -6,19 +6,21 @@ import {
     Grid,
     theme,
     Textarea,
+    Button,
+    IconButton,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import AlgCard from "./AlgCard";
 import parseInput from "./parseInput";
+import { MdKeyboardHide } from "react-icons/md";
 
 export const App = () => {
-    // const [algLists, setAlgLists] = useState<
-    //     { title: string; algs: string[]; isZBLS: boolean }[]
-    // >([]);
 
-    let [inputValue, setInputValue] = useState(
+    const [inputValue, setInputValue] = useState(
         () => localStorage.getItem("algListInput") || ""
     );
+
+    const [showInput, setShowInput] = useState(true);
 
     let algLists = parseInput(inputValue);
 
@@ -29,7 +31,7 @@ export const App = () => {
     return (
         <ChakraProvider theme={theme}>
             <Box textAlign="center" fontSize="xl" height={"100vh"}>
-                <Grid pl={2} templateColumns="70% 30%" height={"100vh"}>
+                <Grid pl={2} templateColumns={showInput ? "70% 30%" : "100%"} height={"100vh"}>
                     <VStack spacing={3} height={"100vh"} overflow={"scroll"}>
                         <Text fontWeight={"bold"} fontSize={30}>
                             Alg List Visualizer
@@ -62,12 +64,13 @@ export const App = () => {
                             </Text>
                         )}
                     </VStack>
-                    <Textarea
+                    {showInput && <Textarea
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         height="full"
-                    />
+                    />}
                 </Grid>
+                <IconButton icon={<MdKeyboardHide />} pos={'absolute'} bottom={5} right={5} zIndex={10} colorScheme="linkedin"  aria-label="show/hide input" onClick={() => setShowInput((o) => !o)}/>
             </Box>
         </ChakraProvider>
     );
