@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/alg_list_visualizer/static/js/main.bde9caed.js",
+    "main.js": "/alg_list_visualizer/static/js/main.d72e3ce7.js",
     "index.html": "/alg_list_visualizer/index.html",
-    "main.bde9caed.js.map": "/alg_list_visualizer/static/js/main.bde9caed.js.map"
+    "main.d72e3ce7.js.map": "/alg_list_visualizer/static/js/main.d72e3ce7.js.map"
   },
   "entrypoints": [
-    "static/js/main.bde9caed.js"
+    "static/js/main.d72e3ce7.js"
   ]
 }
