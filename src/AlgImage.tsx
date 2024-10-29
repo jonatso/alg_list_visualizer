@@ -9,7 +9,7 @@ export default function AlgImage({
 }) {
     return (
         <Image
-            src={`http://cubiclealgdbimagegen.azurewebsites.net/generator?&puzzle=3&case=${alg}&view=plan&stage=${
+            src={`https://cube.rider.biz/visualcube.php?fmt=svg&puzzle=3&case=${alg}&view=plan&stage=${
                 isZBLS ? "vh" : "zbll"
             }&size=200`}
             alt={alg}
