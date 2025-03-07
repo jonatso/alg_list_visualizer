@@ -1,77 +1,70 @@
-import {
-    ChakraProvider,
-    Box,
-    Text,
-    VStack,
-    Grid,
-    theme,
-    Textarea,
-    Button,
-    IconButton,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import AlgCard from "./AlgCard";
-import parseInput from "./parseInput";
-import { MdKeyboardHide } from "react-icons/md";
+import { MantineProvider, Box, Text, Grid, Stack, Textarea, ActionIcon, SimpleGrid } from '@mantine/core';
+import { useEffect, useState } from 'react';
+import AlgCard from './AlgCard';
+import parseInput from './parseInput';
+import { MdKeyboardHide } from 'react-icons/md';
+import '@mantine/core/styles.css';
+
 
 export const App = () => {
+  const [inputValue, setInputValue] = useState(() => localStorage.getItem("algListInput") || "");
+  const [showInput, setShowInput] = useState(true);
 
-    const [inputValue, setInputValue] = useState(
-        () => localStorage.getItem("algListInput") || ""
-    );
+  const algLists = parseInput(inputValue);
 
-    const [showInput, setShowInput] = useState(true);
+  useEffect(() => {
+    localStorage.setItem("algListInput", inputValue);
+  }, [inputValue]);
 
-    let algLists = parseInput(inputValue);
+  console.log(algLists)
 
-    useEffect(() => {
-        localStorage.setItem("algListInput", inputValue);
-    }, [inputValue]);
-
-    return (
-        <ChakraProvider theme={theme}>
-            <Box textAlign="center" fontSize="xl" height={"100vh"}>
-                <Grid pl={2} templateColumns={showInput ? "70% 30%" : "100%"} height={"100vh"}>
-                    <VStack spacing={3} height={"100vh"} overflow={"scroll"}>
-                        <Text fontWeight={"bold"} fontSize={30}>
-                            Alg List Visualizer
-                        </Text>
-                        {inputValue.length > 0 ? (
-                            algLists.map((algList) => (
-                                <Box>
-                                    <Text fontWeight={"semibold"}>
-                                        {algList.title}
-                                    </Text>
-                                    <Grid
-                                        templateColumns={"repeat(5, 1fr)"}
-                                        gap={2}
-                                        width={"full"}
-                                    >
-                                        {algList.algs.map((alg) => (
-                                            <AlgCard
-                                                alg={alg}
-                                                isZBLS={algList.isZBLS}
-                                            />
-                                        ))}
-                                    </Grid>
-                                </Box>
-                            ))
-                        ) : (
-                            <Text>
-                                🤠 Seperate each alg list with a line starting
-                                with //, and put one alg per line. Put comments
-                                on algs behind # 🤠
-                            </Text>
-                        )}
-                    </VStack>
-                    {showInput && <Textarea
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        height="full"
-                    />}
-                </Grid>
-                <IconButton icon={<MdKeyboardHide />} pos={'absolute'} bottom={5} right={5} zIndex={10} colorScheme="linkedin"  aria-label="show/hide input" onClick={() => setShowInput((o) => !o)}/>
-            </Box>
-        </ChakraProvider>
-    );
+  return (
+    <MantineProvider>
+      <Box style={{ textAlign: 'center', fontSize: 'xl', height: '100vh', position: 'relative' }}>
+        <Grid columns={10} style={{ height: '100vh' }}>
+          <Grid.Col span={showInput ? 7 : 10} style={{ height: '100vh', overflowY: 'auto', paddingLeft: 8 }}>
+            <Stack gap="md">
+              <Text weight={700} size="xl" fw={700}>
+                Alg List Visualizer
+              </Text>
+              {inputValue.length > 0 ? (
+                algLists.map((algList, index) => (
+                  <Box key={index}>
+                    <Text weight={500}>{algList.title}</Text>
+                    <SimpleGrid cols={5} spacing="sm">
+                      {algList.algs.map((alg, i) => (
+                        <AlgCard key={i} alg={alg} isZBLS={algList.isZBLS} />
+                      ))}
+                    </SimpleGrid>
+                  </Box>
+                ))
+              ) : (
+                <Text>
+                  🤠 Seperate each alg list with a line starting with //, and put one alg per line. Put comments on algs behind # 🤠
+                </Text>
+              )}
+            </Stack>
+          </Grid.Col>
+          {showInput && (
+            <Grid.Col span={3} style={{ height: '100vh' }}>
+              <Textarea
+                value={inputValue}
+                onChange={(e) => setInputValue(e.currentTarget.value)}
+                h="full"
+              />
+            </Grid.Col>
+          )}
+        </Grid>
+        <ActionIcon
+          style={{ position: 'absolute', bottom: 5, right: 5, zIndex: 10 }}
+          color="blue"
+          onClick={() => setShowInput((o) => !o)}
+          title="Show/hide input"
+          size="lg"
+        >
+          <MdKeyboardHide size={24} />
+        </ActionIcon>
+      </Box>
+    </MantineProvider>
+  );
 };
