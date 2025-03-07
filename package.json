@@ -1,45 +1,41 @@
 {
-  "name": "alg_list_visualizer",
-  "homepage": "alg_list_visualizer",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@mantine/core": "^7.17.1",
-    "@mantine/hooks": "^7.17.1",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-icons": "^5.5.0",
-    "typescript": "^4.8.4"
-  },
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/node": "^22.13.9",
-    "@vitejs/plugin-react": "^4.3.4",
-    "cubing": "^0.54.3",
-    "gh-pages": "^4.0.0",
-    "vite": "^6.2.1"
-  }
+	"name": "alg_list_visualizer",
+	"homepage": "alg_list_visualizer",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@mantine/core": "^7.17.1",
+		"@mantine/hooks": "^7.17.1",
+		"@types/react": "^18.0.25",
+		"@types/react-dom": "^18.0.8",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
+		"typescript": "^4.8.4"
+	},
+	"scripts": {
+		"start": "vite",
+		"build": "vite build",
+		"serve": "vite preview",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [">0.2%", "not dead", "not op_mini all"],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.13.9",
+		"@vitejs/plugin-react": "^4.3.4",
+		"cubing": "^0.54.3",
+		"gh-pages": "^4.0.0",
+		"vite": "^6.2.1"
+	}
 }
