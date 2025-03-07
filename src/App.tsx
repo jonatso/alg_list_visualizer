@@ -31,7 +31,7 @@ export const App = () => {
                 algLists.map((algList, index) => (
                   <Box key={index}>
                     <Text weight={500}>{algList.title}</Text>
-                    <SimpleGrid cols={5} spacing="sm">
+                    <SimpleGrid cols={{xs: 2, sm: 3, md: 4, lg: 5}} spacing="sm">
                       {algList.algs.map((alg, i) => (
                         <AlgCard key={i} alg={alg} isZBLS={algList.isZBLS} />
                       ))}
